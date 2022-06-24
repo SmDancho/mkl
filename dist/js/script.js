@@ -25,7 +25,7 @@ const swiper = new Swiper('.swiper', {
 
 //map 
 
-let center = [45.03547,38.975313];
+let center = [59.021019,38.050309];
 
 function init() {
 	let map = new ymaps.Map('map', {
@@ -33,145 +33,265 @@ function init() {
 		zoom: 5
 	});
 
-	// let placemark1 = new ymaps.Placemark(center, {
-		// balloonContent: `
-		// 	<div class="balloon">
-		// 		<div class="balloon__address">г. Париж</div>
-		// 		<div class="balloon__contacts">
-		// 			<a href="tel:+7999999999">+7999999999</a>
-		// 		</div>
-		// 	</div>
-		// `
-	// }, {
-	// 	iconLayout: 'default#image',
-	// 	iconImageHref: 'https://cdn-icons-png.flaticon.com/512/58/58960.png',
-	// 	iconImageSize: [40, 40],
-	// 	iconImageOffset: [-19, -44]
-	// });
+	let placemark1 = new ymaps.Placemark(center, {
+		balloonContent: `
+			<div class="balloon">
+      <div class="balloon__img">
+      <img class= "markimg"src="icons/mapicon1.jpg" alt="angar">
+      <img class= "markimg"src="icons/mapicon2.jpg" alt="angar">
+				</div>
+
+				<div class="balloon__address">"Краснодар"</div>
+        <div class="balloon__descr">
+        Ангар
+            24х30х5
+            Холодный
+        </div>
+				
+			</div>
+		`
+	}, {
+		iconLayout: 'default#image',
+		iconImageHref: 'icons/point.png',
+		iconImageSize: [40, 40],
+	});
+
+  let placemark2 = new ymaps.Placemark([53.756344,40.154864], {
+		balloonContent: `
+			<div class="balloon">
+      <div class="balloon__img">
+        <img class= "markimg"src="icons/mapicon3.jpg" alt="angar">
+        <img class= "markimg"src="icons/mapicon4.jpg" alt="angar">
+				</div>
+        
+				<div class="balloon__address">"село Петрово"</div>
+        <div class="balloon__descr">
+        Ферма (коровник)
+        12х68х4,5
+        Теплый
+        </div>
+				
+			</div>
+		`
+	}, {
+		iconLayout: 'default#image',
+		iconImageHref: 'icons/point.png',
+		iconImageSize: [40, 40],
+	});
+
+  let placemark3 = new ymaps.Placemark([56.326797,44.006516], {
+		balloonContent: `
+			<div class="balloon">
+      <div class="balloon__img">
+      <img class= "markimg"src="icons/mapicon5.jpg" alt="angar">
+      <img class= "markimg"src="icons/mapicon6.jpg" alt="angar">
+				</div>
+
+				<div class="balloon__address">"Нижний Новгород"</div>
+        <div class="balloon__descr">
+        Арочный ангар
+        14х20х6
+        </div>
+				
+			</div>
+		`
+	}, {
+		iconLayout: 'default#image',
+		iconImageHref: 'icons/point.png',
+		iconImageSize: [40, 40],
+	});
+
+  let placemark4 = new ymaps.Placemark([54.471738,36.063626], {
+		balloonContent: `
+			<div class="balloon">
+      <div class="balloon__img">
+      <img class= "markimg"src="icons/mapicon7.jpg" alt="angar">
+      <img class= "markimg"src="icons/mapicon8.jpg" alt="angar">
+				</div>
+
+				<div class="balloon__address">"Калужская область"</div>
+        <div class="balloon__descr">
+        Склад авиатехники
+        12х40х6
+        Холодный
+        </div>
+				
+			</div>
+		`
+	}, {
+		iconLayout: 'default#image',
+		iconImageHref: 'icons/point.png',
+		iconImageSize: [40, 40],
+	});
+
+  let placemark5 = new ymaps.Placemark([57.877898,39.481864], {
+		balloonContent: `
+			<div class="balloon">
+      <div class="balloon__img">
+      <img class= "markimg"src="icons/mapicon9.jpg" alt="angar">
+				</div>
+
+				<div class="balloon__address">"Артемьевское сельское поселение"</div>
+        <div class="balloon__descr">
+        Магазин
+        21.3х19.4х4
+        Теплый
+        </div>
+				
+			</div>
+		`
+	}, {
+		iconLayout: 'default#image',
+		iconImageHref: 'icons/point.png',
+		iconImageSize: [40, 40],
+	});
+
+  let placemark6 = new ymaps.Placemark([59.021019,38.050309], {
+		balloonContent: `
+			<div class="balloon">
+      <div class="balloon__img">
+      <img class= "markimg"src="icons/mapicon10.jpg" alt="angar">
+      <img class= "markimg"src="icons/mapicon11.jpg" alt="angar">
+				</div>
+
+				<div class="balloon__address">"деревня Починок"</div>
+        <div class="balloon__descr">
+        Производство
+        10х15х5
+        Холодный
+        </div>
+				
+			</div>
+		`
+	}, {
+		iconLayout: 'default#image',
+		iconImageHref: 'icons/point.png',
+		iconImageSize: [40, 40],
+	});
+  let placemark7 = new ymaps.Placemark([60.732071,33.522171], {
+		balloonContent: `
+			<div class="balloon">
+      <div class="balloon__img">
+      <img class= "markimg"src="icons/mapicon12.jpg" alt="angar">
+  
+				</div>
+
+				<div class="balloon__address">"Ленинградская область"</div>
+        <div class="balloon__descr">
+        Пилорама
+        12х24х6,7
+        Теплый
+        </div>
+				
+			</div>
+		`
+	}, {
+		iconLayout: 'default#image',
+		iconImageHref: 'icons/point.png',
+		iconImageSize: [40, 40],
+	});
+  let placemark8 = new ymaps.Placemark([59.838873,30.444254], {
+		balloonContent: `
+			<div class="balloon">
+      <div class="balloon__img">
+      <img class= "markimg"src="icons/mapicon13.jpg" alt="angar">
+      <img class= "markimg"src="icons/mapicon14.jpg" alt="angar">
+  
+				</div>
+
+				<div class="balloon__address">"Санкт-Петербург"</div>
+        <div class="balloon__descr">
+        Мойка автоцистерн
+        9х20х7
+        </div>
+				
+			</div>
+		`
+	}, {
+		iconLayout: 'default#image',
+		iconImageHref: 'icons/point.png',
+		iconImageSize: [40, 40],
+	});
+
+  let placemark9 = new ymaps.Placemark([59.435109,29.691314], {
+		balloonContent: `
+			<div class="balloon">
+      <div class="balloon__img">
+      <img class= "markimg"src="icons/mapicon14.jpg" alt="angar">
+      <img class= "markimg"src="icons/mapicon15.jpg" alt="angar">
+  
+				</div>
+
+				<div class="balloon__address">"деревня Холоповицы"</div>
+        <div class="balloon__descr">
+        Цыплятник
+        18х24х4.5
+        Теплый
+        </div>
+				
+			</div>
+		`
+	}, {
+		iconLayout: 'default#image',
+		iconImageHref: 'icons/point.png',
+		iconImageSize: [40, 40],
+	});
+
+  
+  let placemark10 = new ymaps.Placemark([66.084539,76.680956], {
+		balloonContent: `
+			<div class="balloon">
+      <div class="balloon__img">
+      <img class= "markimg"src="icons/mapicon16.jpg" alt="angar">
+      <img class= "markimg"src="icons/mapicon17.jpg" alt="angar">
+  
+				</div>
+
+				<div class="balloon__address">"Новый Уренгой"</div>
+        <div class="balloon__descr">
+        Ангар под автобусы
+        </div>
+				
+			</div>
+		`
+	}, {
+		iconLayout: 'default#image',
+		iconImageHref: 'icons/point.png',
+		iconImageSize: [40, 40],
+	});
 
 
 
 	
 
-  var coords = [
-    [45.03547,38.975313],
-  [47.017945,39.391934],
-  [52.239195,40.342139],
-  [53.199681,50.262375],
-  [54.309291,50.262376],
-  [54.220874,50.262377],
-  [55.430901,50.262387],
-  [56.636783,50.262379],
-  [53.756344,50.262380],
-  [56.250896765670326,50.262381],
-  [56.326797,50.262382],
-  [56.326797,50.262383],
-  [56.326797,50.262384],
-  [54.468108,50.262385],
-  [54.471738,50.262386],
-  [54.938855,50.262387],
-  [55.061003,50.262388],
-  [55.103034,50.262389],
-  [55.37304,50.262390],
-  [55.328336053967355,50.262391],
-  [55.32840180787991,50.262392],
-  [55.437174,50.262393],
-  [55.43718009964942,50.262394],
-  [55.43716790001437,50.262395],
-  [55.464664,50.262396],
-  [55.726761,50.262397],
-  [55.873454,50.262398],
-  [55.888604,50.262399],
-  [55.922071,50.262400],
-  [55.755864,50.262401],
-  [55.755863999606625,50.262402],
-  [55.818653878331176,50.262403],
-  [55.81981362332687,50.262404],
-  [55.868824,50.262405],
-  [55.941889,50.262406],
-  [56.016748,50.262407],
-  [55.992976,50.262408],
-  [55.930806,50.262409],
-  [55.920179,50.262410],
-  [56.110902,50.262411],
-  [56.480241,50.262412],
-  [56.556517,50.262413],
-  [56.736345,50.262414],
-  [56.966803,50.262415],
-  [58.0262,50.262416],
-  [58.04864,50.262417],
-  [57.877898,50.262418],
-  [57.86614511921017,50.262419],
-  [57.707350261494305,50.262420],
-  [57.796066,50.262421],
-  [56.980047,50.262422],
-  [57.003814,50.262423],
-  [59.389318,50.262424],
-  [59.951074,50.262425],
-  [59.47436,50.262426],
-  [59.204476,50.262427],
-  [59.230106,50.262428],
-  [59.230106,50.262429],
-  [59.021019,50.262430],
-  [59.131552,50.262431],
-  [59.122612,50.262432],
-  [59.122523746212806,50.262433],
-  [59.157016,50.262434],
-  [59.157375,50.262435],
-  [59.477009,50.262436],
-  [60.732071,50.262437],
-  [60.418662,50.262438],
-  [61.501468,50.262439],
-  [59.833488,50.262440],
-  [59.939099,50.262441],
-  [59.838873,50.262442],
-  [59.840157,50.262443],
-  [59.811817,50.262444],
-  [59.435109,50.262445],
-  [59.435109,50.262446],
-  [59.435109,50.262447],
-  [66.084539,50.262448],
-  ];
   
-    
-  var myGeoObjects = [];
-  
-  for (var i = 0; i<coords.length; i++) {
-    myGeoObjects[i] = new ymaps.GeoObject({
-      geometry: {
-        type: "Point",
-        coordinates: coords[i]
-      },
-      properties: {
-        clusterCaption: 'Геообъект № '+(i+1),
-        balloonContent: `
-        <div class="balloon">
-          <div class="balloon__address">${coords[i]}</div>
-          <div class="balloon__contacts">
-            <a href="tel:+7999999999">+7999999999</a>
-          </div>
-        </div>
-      `
-      }
-    },
-    {
-      iconLayout: 'default#image',
-      iconImageHref: 'https://cdn-icons-png.flaticon.com/512/684/684809.png',
-      iconImageSize: [40, 40],
-      
-    
-    },
-  );
-  }
-  
-  var myClusterer = new ymaps.Clusterer();
 
-  myClusterer.add(myGeoObjects);
+  map.geoObjects.add(placemark1);
+  map.geoObjects.add(placemark2);
+  map.geoObjects.add(placemark3);
+  map.geoObjects.add(placemark4);
+  map.geoObjects.add(placemark5);
+  map.geoObjects.add(placemark6);
+  map.geoObjects.add(placemark7);
+  map.geoObjects.add(placemark8);
+  map.geoObjects.add(placemark9);
+  map.geoObjects.add(placemark10);
 
-  map.geoObjects.add(myClusterer);
-  
-  
 
 }
 ymaps.ready(init);
 		
+// headerFixed 
+
+window.onscroll = function showHeader () {
+    
+  let header = document.querySelector('.header')
+
+  if (window.pageYOffset > 100) {
+    header.classList.add('header_fixed');
+  }
+  else if(window.pageYOffset < 100) {
+    header.classList.remove('header_fixed');
+  }
+
+}
