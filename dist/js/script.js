@@ -312,7 +312,7 @@ ymaps.ready(init);
   const callBtn = document.querySelector('.connectbtn');
   const popup = document.querySelector('.popup');
   const backgroundDark = document.querySelector('.black');
-  const btnForm = document.querySelector('.btn_form ');
+  const btnForm = document.querySelector('#main__button');
   const popupClose = document.querySelector('.popup__closeblock');
   
   callBtn.addEventListener('click' , () => {
@@ -328,9 +328,33 @@ ymaps.ready(init);
   backgroundDark.addEventListener('click' , () => {
     popup.classList.remove('popup_active');
     backgroundDark.classList.remove('black_active');
+    hamburger.classList.remove('hamburger_active');
+      menu.classList.remove('list_active');
   });
   
+  btnForm.addEventListener('click', () => {
+    popup.classList.add('popup_active');
+    backgroundDark.classList.add('black_active');
+  });
+  
+  //burgerMenu
 
+  const menu = document.querySelector('.list'),
+  menuItem = document.querySelectorAll('.list__item'),
+  hamburger = document.querySelector('.hamburger');
+
+  hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('hamburger_active');
+      menu.classList.toggle('list_active');
+      backgroundDark.classList.toggle('black_active');
+  });
+
+  menuItem.forEach(item => {
+      item.addEventListener('click', () => {
+          hamburger.classList.toggle('hamburger_active');
+          menu.classList.toggle('list_active');
+      })
+  })
 
 
  // validate form 
@@ -419,22 +443,4 @@ const validation = new JustValidate('#form', {
     event.target.reset();
   });
 
-  //burgerMenu 
-    window.addEventListener('DOMContentLoaded', () => {
-      const menu = document.querySelector('.list'),
-      menuItem = document.querySelectorAll('.list__item'),
-      hamburger = document.querySelector('.hamburger');
-
-      hamburger.addEventListener('click', () => {
-          hamburger.classList.toggle('hamburger_active');
-          menu.classList.toggle('list_active');
-      });
-
-      menuItem.forEach(item => {
-          item.addEventListener('click', () => {
-              hamburger.classList.toggle('hamburger_active');
-              menu.classList.toggle('list_active');
-          })
-      })
-  })
-
+ 
