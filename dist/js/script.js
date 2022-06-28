@@ -16,7 +16,24 @@ const swiper = new Swiper('.swiper', {
       clickable : true,
       currentClass :'swiper-pagination-current',
     },
-  
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10
+      },
+      // when window width is >= 480px
+      480: {
+        slidesPerView: 2,
+        spaceBetween: 10
+      },
+      // when window width is >= 640px
+      640: {
+        slidesPerView: 3,
+        spaceBetween: 10
+      }
+    }
+   
  
   
  
@@ -284,25 +301,11 @@ function init() {
 
 }
 ymaps.ready(init);
-		
-// headerFixed 
 
-window.onscroll = function showHeader () {
-    
-  let header = document.querySelector('.header');
-
-  if (window.pageYOffset > 100) {
-    header.classList.add('header_fixed');
-  }
-  else if(window.pageYOffset < 100) {
-    header.classList.remove('header_fixed');
-  }
-
-};
 
 //popupHeader
 
-window.addEventListener('DOMContentLoaded', () => {
+
   const callBtn = document.querySelector('.connectbtn');
   const popup = document.querySelector('.popup');
   const backgroundDark = document.querySelector('.black');
@@ -324,9 +327,111 @@ window.addEventListener('DOMContentLoaded', () => {
     backgroundDark.classList.remove('black_active');
   });
   
-  btnForm.addEventListener('click' , () => {
-    popup.classList.remove('popup_active');
-    backgroundDark.classList.remove('black_active');
-  })
+
+
+
+ // validate form 
+
+let telSelector = document.querySelectorAll('input[type="tel"]');
+const inputMask = new Inputmask('+7 (999) 999-99-99');
+inputMask.mask(telSelector);
+
+const validation = new JustValidate('#form', {
+  errorFieldCssClass: 'error',
+  
 });
+
+ validation
+ 
+   .addField('#name', [
+     {
+       rule: 'minLength',
+       value: 2,
+     },
+     
+     {
+       rule: 'maxLength',
+       value: 30,
+     },
+     {
+      rule: 'required',
+      errorMessage: 'Обязательное поле',
+    },
+    
+   ])
+   .addField('#email', [
+     {
+       rule: 'email',
+       errorMessage: 'поле введено не правильно',
+     },
+   ])
+   .addField('#surname', [
+    {
+      rule: 'minLength',
+      value: 2,
+    },
+   
+    {
+      rule: 'maxLength',
+      value: 30,
+    },
+    {
+      rule: 'required',
+      errorMessage: 'Обязательное поле',
+    },
+  ])
+  .addField('#phone', [
+    {
+      rule: 'required',
+      errorMessage: 'Обязательное поле',
+    },
+
+  ])
+  .addField('#privacy_check', [
+    {
+      rule: 'required',
+      errorMessage: 'Обязательное поле',
+    },
+  ]
+  ).onSuccess((event) => {
+    console.log('Validation passes and form submitted', event);
+
+    let formData = new FormData(event.target);
+
+    console.log(...formData);
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log('Отправлено');
+        }
+      }
+    }
+
+    xhr.open('POST', 'smart.php', true);
+    xhr.send(formData);
+
+    event.target.reset();
+  });
+
+  //burgerMenu 
+    window.addEventListener('DOMContentLoaded', () => {
+      const menu = document.querySelector('.list'),
+      menuItem = document.querySelectorAll('.list__item'),
+      hamburger = document.querySelector('.hamburger');
+
+      hamburger.addEventListener('click', () => {
+          hamburger.classList.toggle('hamburger_active');
+          menu.classList.toggle('list_active');
+      });
+
+      menuItem.forEach(item => {
+          item.addEventListener('click', () => {
+              hamburger.classList.toggle('hamburger_active');
+              menu.classList.toggle('list_active');
+          })
+      })
+  })
 
