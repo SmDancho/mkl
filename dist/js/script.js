@@ -363,14 +363,19 @@ let telSelector = document.querySelectorAll('input[type="tel"]');
 const inputMask = new Inputmask('+7 (999) 999-99-99');
 inputMask.mask(telSelector);
 
-const validation = new JustValidate('#form', {
+const validation = new JustValidate('.js-form', {
+  errorFieldCssClass: 'error',
+  
+});
+
+const validation2 = new JustValidate('#form', {
   errorFieldCssClass: 'error',
   
 });
 
  validation
  
-   .addField('#name', [
+   .addField('.js-name', [
      {
        rule: 'minLength',
        value: 2,
@@ -386,13 +391,13 @@ const validation = new JustValidate('#form', {
     },
     
    ])
-   .addField('#email', [
+   .addField('.js-email', [
      {
        rule: 'email',
        errorMessage: 'поле введено не правильно',
      },
    ])
-   .addField('#surname', [
+   .addField('.js-surname', [
     {
       rule: 'minLength',
       value: 2,
@@ -407,14 +412,14 @@ const validation = new JustValidate('#form', {
       errorMessage: 'Обязательное поле',
     },
   ])
-  .addField('#phone', [
+  .addField('.js-phone', [
     {
       rule: 'required',
       errorMessage: 'Обязательное поле',
     },
 
   ])
-  .addField('#privacy_check', [
+  .addField('.js-check', [
     {
       rule: 'required',
       errorMessage: 'Обязательное поле',
@@ -443,4 +448,77 @@ const validation = new JustValidate('#form', {
     event.target.reset();
   });
 
- 
+
+  validation2
+  .addField('.js-name2', [
+    {
+      rule: 'minLength',
+      value: 2,
+    },
+    
+    {
+      rule: 'maxLength',
+      value: 30,
+    },
+    {
+     rule: 'required',
+     errorMessage: 'Обязательное поле',
+   },
+   
+  ])
+  .addField('.js-email2', [
+    {
+      rule: 'email',
+      errorMessage: 'поле введено не правильно',
+    },
+  ])
+  .addField('.js-surname2', [
+   {
+     rule: 'minLength',
+     value: 2,
+   },
+  
+   {
+     rule: 'maxLength',
+     value: 30,
+   },
+   {
+     rule: 'required',
+     errorMessage: 'Обязательное поле',
+   },
+ ])
+ .addField('.js-phone2', [
+   {
+     rule: 'required',
+     errorMessage: 'Обязательное поле',
+   },
+
+ ])
+ .addField('.js-check2', [
+   {
+     rule: 'required',
+     errorMessage: 'Обязательное поле',
+   },
+ ]
+ ).onSuccess((event) => {
+   console.log('Validation passes and form submitted', event);
+
+   let formData = new FormData(event.target);
+
+   console.log(...formData);
+
+   let xhr = new XMLHttpRequest();
+
+   xhr.onreadystatechange = function () {
+     if (xhr.readyState === 4) {
+       if (xhr.status === 200) {
+         console.log('Отправлено');
+       }
+     }
+   }
+
+   xhr.open('POST', 'smart.php', true);
+   xhr.send(formData);
+
+   event.target.reset();
+ });
